@@ -7,16 +7,22 @@
 import SwiftUI
 
 struct SeeAllButton: View {
+    @Binding var isSeeAll: Bool
+    var showText: String = "Show less"
+    var hideText: String = "See all"
+
     var body: some View {
-        Button {
-            //
-        } label: {
-            HStack (spacing: 7){
-                Text("See all")
-                Image(systemName: "chevron.down")
+        Button(action: {
+            isSeeAll.toggle()
+        }) {
+            HStack {
+                Text(isSeeAll ? showText : hideText)
+                Image(systemName: isSeeAll ? "chevron.up" : "chevron.down")
+
             }
             .font(type: .regular, size: 16)
             .foregroundStyle(Color (hex: "BDC3BA"))
         }
     }
+
 }

@@ -9,22 +9,12 @@
 import SwiftUI
 
 
-struct ExpandableButton: View {
-    @Binding var isExpanded: Bool
 
-    var body: some View {
-        Button(action: {
-            isExpanded.toggle()
-        }) {
-            Image(systemName: "chevron.compact.down")
-            Text("why")
-        }
-    }
-
-}
 
 
 struct ContentView: View {
+    @State var isQuoteExpanded = false
+    @State var isRequestExpanded = false
     var body: some View {
         VStack {
             ScrollView {
@@ -75,7 +65,7 @@ struct ContentView: View {
                                     .font(type: .medium, size: 20)
                                     .foregroundStyle(.white)
                                 Spacer()
-                                SeeAllButton()
+                                SeeAllButton(isSeeAll: $isQuoteExpanded)
                             }
                             HStack {
                                 ForEach(User.mockData) { user in
@@ -94,8 +84,9 @@ struct ContentView: View {
                                     .font(type: .medium, size: 20)
                                     .foregroundStyle(.white)
                                 Spacer()
-                                SeeAllButton()
+                                SeeAllButton(isSeeAll: $isRequestExpanded)
                             }
+                            .padding(.horizontal, 20)
                         }
 
                         VStack(alignment: .leading, spacing: 15) {
