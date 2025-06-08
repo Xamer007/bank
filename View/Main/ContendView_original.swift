@@ -8,6 +8,21 @@
 
 import SwiftUI
 
+
+struct ExpandableButton: View {
+    @Binding var isExpanded: Bool
+
+    var body: some View {
+        Button(action: {
+            isExpanded.toggle()
+        }) {
+            Image(systemName: "chevron.compact.down")
+        }
+    }
+
+}
+
+
 struct ContentView: View {
     var body: some View {
         VStack {
