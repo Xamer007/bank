@@ -17,6 +17,7 @@ struct ExpandableButton: View {
             isExpanded.toggle()
         }) {
             Image(systemName: "chevron.compact.down")
+            Text("why")
         }
     }
 
