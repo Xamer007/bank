@@ -58,26 +58,33 @@ struct ContentView: View {
                             }
                             AddButtonViwe()
                         }
-
+                        //Quick Send
                         VStack(alignment: .leading, spacing: 18) {
                             HStack {
                                 Text("Quick Send")
                                     .font(type: .medium, size: 20)
                                     .foregroundStyle(.white)
+                                
                                 Spacer()
                                 SeeAllButton(isSeeAll: $isQuoteExpanded)
                             }
-                            HStack {
-                                ForEach(User.mockData) { user in
+                            let userToShow: [User] = isQuoteExpanded ? User.mockData : Array(User.mockData.prefix(5))
+
+                            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5), spacing: 20) {
+                                ForEach(userToShow) { user in
                                     ContactView(user: user)
-                                        .frame(maxWidth: .infinity)
+
+
                                 }
+
                             }
+
                         }
                         .padding(20)
                         .background(Color (hex: "2F352A"))
                         .clipShape(RoundedRectangle(cornerRadius: 20))
-
+                        
+                        //Recent Activity
                         VStack(alignment: .leading) {
                             HStack {
                                 Text("Recent Activity")
@@ -89,11 +96,15 @@ struct ContentView: View {
                             .padding(.horizontal, 20)
                         }
 
+
+
+                        let stockToShow = isRequestExpanded ? Stock.mockData : Array(Stock.mockData.prefix(3))
+
                         VStack(alignment: .leading, spacing: 15) {
 
-                            ForEach(Stock.mockData.indices, id: \.self) { index in
-                                ActivitiView(stock: Stock.mockData[index])
-                                if index != Stock.mockData.indices.last {
+                            ForEach(stockToShow.indices, id: \.self) { index in
+                                ActivitiView(stock: stockToShow[index])
+                                if index != stockToShow.indices.last {
                                     Divider()
                                         .frame(height: 1.2)
                                         .background(Color (hex: "3E4438"))

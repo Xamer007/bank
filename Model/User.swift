@@ -19,10 +19,13 @@ struct User: Identifiable, Hashable {
             User(name: "Jake", image: "ava4"),
             User(name: "Ron", image: "ava5"),
             User(name: "John", image: "ava"),
-//            User(name: "Alex", image: "ava4"),
-//            User(name: "Mark", image: "ava5"),
-//            User(name: "David", image: "ava"),
-//            User(name: "Tom", image: "ava2"),
-//            User(name: "Michael", image: "ava3"),
+            User(name: "Alex", image: "ava4"),
+            User(name: "Mark", image: "ava5"),
+            User(name: "David", image: "ava"),
+            User(name: "Tom", image: "ava2"),
+            User(name: "Michael", image: "ava3"),
+            User(name: "Robert", image: "ava4"),
+            User(name: "William", image: "ava5"),
+            User(name: "George", image: "ava"),
         ]
     }
